@@ -40,4 +40,85 @@ coffee = CoffeeMachine(water=300, milk=200, coffee=30)
 coffee.make_latte()
 coffee.make_latte()
 
-        
+
+
+
+#Exercise 13
+
+class Vehicle:
+    def __init__(self, name, max_speed):
+        self.name= name
+        self.max_speed = max_speed
+
+    def display(self):
+        print(f"Vehiclename: {self.name} with the speed {self.max_speed}")
+
+class Bus(Vehicle):
+    pass
+
+bus1 = Bus('School Bus', 40)
+bus1.display()
+
+
+# Exercise 15: Inheritance-super
+class Vehicle:
+    def __init__(self, base_fare):
+        self.base_fare= base_fare
+
+class Taxi(Vehicle):
+    def __init__(self, base_fare):
+        super().__init__(base_fare)
+        self.maintenance_fee= base_fare *.10
+
+    def total_fare(self):
+        return self.base_fare + self.maintenance_fee
+
+taxi = Taxi(20)
+print(taxi.total_fare())
+
+## Exercise 16: Polymorphism
+class Animal:
+    def speak(self):
+        print('Animal says')
+
+class Dog(Animal):
+    def speak(self):
+        print('Dogs says woof')
+class Cat(Animal):
+    def speak(self):
+        print('Cat says meow')
+
+dog = Dog()
+cat = Cat()
+
+dog.speak()
+cat.speak()
+
+# Exercise 17
+class Employee:
+    def __init__(self, name):
+        self.name= name
+
+    def calculate_pay(self):
+        pass
+
+class FullTimeEmployee(Employee):
+    annual_salary = 12000
+
+
+    def calculate_pay(self):
+        return(f"Monthly salary will be: {self.annual_salary/12}")
+    
+class PartTimeEmployee(Employee):
+    hours = 30
+    hourly_rate= 50
+
+    def calculate_pay(self):
+        return(f"Monthly salary will be: {self.hours*self.hourly_rate*4}")
+
+FTE = FullTimeEmployee("John")
+PTE = PartTimeEmployee('Rob')
+
+print(FTE.calculate_pay())
+print(PTE.calculate_pay())
+    
